@@ -28,11 +28,12 @@ public class Admin {
 	private int adminId;
 	private String name;
 	private String email;
+	
 	private String password;
 	@Enumerated(EnumType.STRING)
 	AdminType adminType;
 	
-	@OneToOne
-	private WareHouse wareHouse;
+//	@OneToOne
+//	private WareHouse wareHouse;
 	
 }

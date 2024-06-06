@@ -22,7 +22,7 @@ public class AdminController {
 	private AdminService service;
 	
 	
-	@PostMapping("/superAdmin")
+	@PostMapping("/register")
 	public ResponseEntity<ResponseStructure<AdminResponse>> saveSuperAdmin(@RequestBody AdminRequest request) {
 		return service.saveSuperAdmin(request);		
 	}
