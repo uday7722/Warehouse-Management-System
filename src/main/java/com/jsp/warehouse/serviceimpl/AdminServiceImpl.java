@@ -1,4 +1,4 @@
-package com.jsp.warehouse.serviceimpl;
+	package com.jsp.warehouse.serviceimpl;
 
 
 
@@ -46,18 +46,10 @@ public class AdminServiceImpl implements AdminService{
 
 	}
 
-
-
 	@Override
-	public ResponseEntity<ResponseStructure<AdminResponse>> saveAdmin(AdminRequest request) {
-
-		Admin admin = repo.save(mapper.mapToAdmin(request, new Admin()));	
-
-		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseStructure<AdminResponse>()
-				.setStatus(HttpStatus.CREATED.value())
-				.setMessage("Super Admin created")
-				.setData(mapper.mapToAdminResponse(admin)));
-
+	public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(AdminRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
