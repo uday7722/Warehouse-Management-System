@@ -3,9 +3,12 @@ package com.jsp.warehouse.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jsp.warehouse.requestdto.WareHouseRequest;
-//import com.jsp.warehouse.service.WareHouseService;
+import com.jsp.warehouse.responsedto.WareHouseResponse;
+import com.jsp.warehouse.service.WareHouseService;
+import com.jsp.warehouse.util.ResponseStructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/v1")
 public class WareHouseController {
 	
-//	@Autowired
-//	private WareHouseService service;
+	@Autowired
+	private WareHouseService service;
 	
-	@GetMapping("/warehouse")
-	public String saveWareHouse( ) {
+	@PostMapping("/warehouses")
+	public ResponseEntity<ResponseStructure<WareHouseResponse>> saveWareHouse(@RequestBody WareHouseRequest houseRequest ) {
 	
-		return "Ware house created"; 
+		return service.createWareHouse(houseRequest);
 		
 	}
 	
