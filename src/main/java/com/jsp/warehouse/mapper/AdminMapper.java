@@ -14,7 +14,7 @@ public class AdminMapper {
 	@Autowired
 	private PasswordEncoder encoder;
 	
-	public Admin mapToAdmin(AdminRequest adminRequest,Admin admin) {
+	public Admin mapToAdmin(AdminRequest adminRequest, Admin admin) {
 		admin.setName(adminRequest.getName());
 		admin.setEmail(adminRequest.getEmail());
 		admin.setPassword(encoder.encode(adminRequest.getPassword()));

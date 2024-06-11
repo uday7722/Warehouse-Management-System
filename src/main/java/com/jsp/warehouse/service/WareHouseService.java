@@ -9,7 +9,11 @@ import com.jsp.warehouse.util.ResponseStructure;
 public interface WareHouseService {
 
 	ResponseEntity<ResponseStructure<WareHouseResponse>> createWareHouse(WareHouseRequest request);
-	
-	
+
+	ResponseEntity<ResponseStructure<WareHouseResponse>> updateWareHouse(int warehouseId,WareHouseRequest wareHouseRequest);
+
+	ResponseEntity<ResponseStructure<WareHouseResponse>> findWarehouse(int warehouseId);
+
+
 
 }
