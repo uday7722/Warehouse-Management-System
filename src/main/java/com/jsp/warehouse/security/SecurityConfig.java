@@ -3,7 +3,7 @@ package com.jsp.warehouse.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,10 +12,11 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	PasswordEncoder passwordEncoder() {
 
 		return new BCryptPasswordEncoder(12);
 		
@@ -23,10 +24,10 @@ public class SecurityConfig {
 
 
 	@Bean
-	public SecurityFilterChain securityFilterchain(HttpSecurity httpSecurity) throws Exception {
+	SecurityFilterChain securityFilterchain(HttpSecurity httpSecurity) throws Exception {
 
 		return httpSecurity.csrf(csrf->csrf.disable())
-				.authorizeHttpRequests(authorize->authorize.requestMatchers("api/v1/register").permitAll().anyRequest().authenticated())
+				.authorizeHttpRequests(authorize->authorize.requestMatchers("api/v1/register", "/login/**").permitAll().anyRequest().authenticated())
 				.formLogin(Customizer.withDefaults()).build();
 
 

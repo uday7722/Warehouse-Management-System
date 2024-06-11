@@ -33,7 +33,5 @@ public class Admin {
 	@Enumerated(EnumType.STRING)
 	AdminType adminType;
 	
-//	@OneToOne
-//	private WareHouse wareHouse;
 	
 }

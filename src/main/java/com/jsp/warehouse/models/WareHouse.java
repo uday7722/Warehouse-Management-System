@@ -22,7 +22,8 @@ public class WareHouse {
 	private int wareHouseId;
 	private String name;
 	
-//	@OneToOne(mappedBy = "warehouse")
-//	private Admin admin;
+	
+	@OneToOne
+	private Admin admin;
 
 }

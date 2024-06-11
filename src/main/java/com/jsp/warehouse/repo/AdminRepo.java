@@ -1,7 +1,6 @@
 package com.jsp.warehouse.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import com.jsp.warehouse.models.Admin;
 import java.util.List;
