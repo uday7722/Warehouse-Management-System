@@ -10,6 +10,7 @@ import com.jsp.warehouse.util.ResponseStructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,8 @@ public class AdminController {
 		return service.saveSuperAdmin(request);		
 	}
 	
-	@PostMapping("/wareHouseId/admins")
+	@PreAuthorize("hasAuthority('CREATE_ADMIN')")
+	@PostMapping("/{wareHouseId}/admins")
 	public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(@PathVariable int wareHouseId,@RequestBody AdminRequest request) {
 		return service.createAdmin(wareHouseId,request);
 	}

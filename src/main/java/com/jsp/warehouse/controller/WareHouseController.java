@@ -9,7 +9,7 @@ import com.jsp.warehouse.util.ResponseStructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +22,7 @@ public class WareHouseController {
 	@Autowired
 	private WareHouseService service;
 	
+	@PreAuthorize("hasAuthority('CREATE_WAREHOUSE')") 
 	@PostMapping("/warehouses")
 	public ResponseEntity<ResponseStructure<WareHouseResponse>> saveWareHouse(@RequestBody WareHouseRequest houseRequest ) {
 	

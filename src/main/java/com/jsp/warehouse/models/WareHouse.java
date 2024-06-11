@@ -22,6 +22,7 @@ public class WareHouse {
 	private int wareHouseId;
 	private String name;
 	
+	
 	@OneToOne
 	private Admin admin;
 

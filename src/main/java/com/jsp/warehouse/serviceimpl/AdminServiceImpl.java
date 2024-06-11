@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.jsp.warehouse.enums.AdminType;
-import com.jsp.warehouse.exception.AdminNotFoundByIdException;
 import com.jsp.warehouse.exception.IllegalOperationException;
 import com.jsp.warehouse.exception.WareHouseNotFoundByIdException;
 import com.jsp.warehouse.mapper.AdminMapper;
@@ -56,25 +55,18 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(int wareHouseId,AdminRequest request) {
 
-		Optional<WareHouse> warehouse = wareHouseRepo.findById(wareHouseId);
-		if(warehouse.isPresent()) {
-			WareHouse foundWarehouse = warehouse.get();
+		WareHouse house=wareHouseRepo.findById(wareHouseId).orElseThrow(()->new WareHouseNotFoundByIdException("No object found"));
 
-			Admin admin = mapper.mapToAdmin(request, new Admin());
-			foundWarehouse.setAdmin(admin);
-			repo.save(admin);
+		Admin admin=mapper.mapToAdmin(request, new Admin());
+		admin.setAdminType(AdminType.ADMIN);
+		admin=repo.save(admin);
+		house.setAdmin(admin);
+		wareHouseRepo.save(house);
 
-			wareHouseRepo.save(foundWarehouse);
-
-			return  ResponseEntity.status(HttpStatus.CREATED).body(
-					new ResponseStructure<AdminResponse>()
-					.setStatus(HttpStatus.CREATED.value())
-					.setMessage("Admin Created")
-					.setData(mapper.mapToAdminResponse(admin)));
-		}
-		else {
-			throw new WareHouseNotFoundByIdException("NO object found");
-		}
+		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseStructure<AdminResponse>()
+				.setStatus(HttpStatus.CREATED.value())
+				.setMessage("Admin object Created")
+				.setData(mapper.mapToAdminResponse(admin)));
 
 
 
