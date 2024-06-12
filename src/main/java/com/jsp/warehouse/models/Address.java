@@ -15,15 +15,21 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class WareHouse {
+public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int wareHouseId;
-	private String name;
+	private int addressId;
+	private String addressLine;
+	private String city;
+	private String state;
+	private String country;
+	private int pincode;
+	private String longitude;
+	private String latitude;
 	
 	@OneToOne
-	private Admin admin;
+	private WareHouse wareHouse;
 	
 
 }
