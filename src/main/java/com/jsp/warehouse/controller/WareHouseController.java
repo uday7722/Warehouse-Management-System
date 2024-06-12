@@ -7,6 +7,8 @@ import com.jsp.warehouse.responsedto.WareHouseResponse;
 import com.jsp.warehouse.service.WareHouseService;
 import com.jsp.warehouse.util.ResponseStructure;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,7 +29,7 @@ public class WareHouseController {
 	
 	@PreAuthorize("hasAuthority('CREATE_WAREHOUSE')") 
 	@PostMapping("/warehouses")
-	public ResponseEntity<ResponseStructure<WareHouseResponse>> saveWareHouse(@RequestBody WareHouseRequest houseRequest ) {
+	public ResponseEntity<ResponseStructure<WareHouseResponse>> saveWareHouse(@RequestBody @Valid WareHouseRequest houseRequest ) {
 	
 		return service.createWareHouse(houseRequest);
 		
@@ -35,7 +37,7 @@ public class WareHouseController {
 	
 	@PreAuthorize("hasAuthority('UPDATE_WAREHOUSE')")
 	@PutMapping("/warehouses/{warehouseId}")
-	public ResponseEntity<ResponseStructure<WareHouseResponse>> updateWarehouse(@RequestBody WareHouseRequest wareHouseRequest,@PathVariable int warehouseId) {
+	public ResponseEntity<ResponseStructure<WareHouseResponse>> updateWarehouse(@RequestBody @Valid WareHouseRequest wareHouseRequest,@PathVariable int warehouseId) {
 		
 		return service.updateWareHouse(warehouseId,wareHouseRequest);
 	}

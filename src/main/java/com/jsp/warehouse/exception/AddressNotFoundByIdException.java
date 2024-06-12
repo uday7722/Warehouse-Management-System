@@ -7,12 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class DuplicateSuperAdminException extends RuntimeException{
+@NoArgsConstructor
+public class AddressNotFoundByIdException extends RuntimeException{
 	
 	private String message;
-	
-	
 
 }

@@ -12,7 +12,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.jsp.warehouse.exception.AddressNotFoundByIdException;
+import com.jsp.warehouse.exception.AdminNotFoundByIdException;
 import com.jsp.warehouse.exception.IllegalOperationException;
+import com.jsp.warehouse.exception.WareHouseNotFoundByIdException;
 
 @RestControllerAdvice
 public class ApplicationExceptionHandler {
@@ -49,6 +52,21 @@ public class ApplicationExceptionHandler {
 	@ExceptionHandler
 	public ResponseEntity<ErrorStructure<String>> hadlerIllegalOperationExcepetion(IllegalOperationException exception){
 		return errorResponse(HttpStatus.FORBIDDEN, exception.getMessage(),"Super admin is already present" ); 
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorStructure<String>> handlerAddressNotFoundByIdException(AddressNotFoundByIdException exception){
+		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorStructure<String>> handlerAdminNotFoundByIdException(AdminNotFoundByIdException exception){
+		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorStructure<String>> handlerWarehouseNotFoundByIdException(WareHouseNotFoundByIdException exception){
+		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
 	}
 
 }
