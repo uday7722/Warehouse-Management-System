@@ -16,6 +16,7 @@ public class WareHouseRequest {
 	@NotNull(message = "Warehouse name cannot be null")
 	@NotBlank(message = "Warehouse name cannot be blank")
 	private String name;
+	private double totalCapacityInKg;
 	
 
 }
