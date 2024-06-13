@@ -65,7 +65,7 @@ public class AdminController {
 	
 	@PreAuthorize("hasAuthority('READ')")
 	@GetMapping("/admins")
-	public ResponseEntity<ResponseStructure<List<AdminResponse>>> findAllAdmin() {
+	public ResponseEntity<ResponseStructure<List<AdminResponse>>> findAllByAdmin() {
 		return service.findAllAdmin();
 	}
 	

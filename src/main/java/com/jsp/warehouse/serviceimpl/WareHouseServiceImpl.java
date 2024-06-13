@@ -1,5 +1,6 @@
 package com.jsp.warehouse.serviceimpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.jsp.warehouse.models.WareHouse;
 import com.jsp.warehouse.repo.WareHouseRepo;
 import com.jsp.warehouse.requestdto.WareHouseRequest;
 import com.jsp.warehouse.responsedto.AdminResponse;
+import com.jsp.warehouse.responsedto.StorageResponse;
 import com.jsp.warehouse.responsedto.WareHouseResponse;
 import com.jsp.warehouse.service.WareHouseService;
 import com.jsp.warehouse.util.ResponseStructure;
@@ -72,6 +74,16 @@ public class WareHouseServiceImpl implements WareHouseService {
 		}).orElseThrow(()->new WareHouseNotFoundByIdException("No warehouse Found by the given Id"));
 		
 
+	}
+
+	@Override
+	public ResponseEntity<ResponseStructure<List<WareHouseResponse>>> findAllWarehouse() {
+		
+		 List<WareHouseResponse> wareHouseresponses = wareHouseRepo.findAll().stream().map(warehouse->wareHouseMapper.mapToWareHouseResponse(warehouse)).toList();
+		
+		return ResponseEntity.status(HttpStatus.FOUND).body(new ResponseStructure<List<WareHouseResponse>>()
+				.setStatus(HttpStatus.FOUND.value())
+				.setMessage("Warehouses found ").setData(wareHouseresponses));
 	}
 
 }

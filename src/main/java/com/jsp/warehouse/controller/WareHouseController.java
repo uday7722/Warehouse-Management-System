@@ -9,6 +9,8 @@ import com.jsp.warehouse.util.ResponseStructure;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -48,6 +50,11 @@ public class WareHouseController {
 		return service.findWarehouse(warehouseId);
 	}
 	
+	@PreAuthorize("hasAuthority('READ')")
+	@GetMapping("/warehouses")
+	public ResponseEntity<ResponseStructure<List<WareHouseResponse>>> findAllWarehouse() {	
+		return service.findAllWarehouse();
+	}
 	
 	
 	
