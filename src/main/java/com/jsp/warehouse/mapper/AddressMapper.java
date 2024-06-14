@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import com.jsp.warehouse.models.Address;
 import com.jsp.warehouse.requestdto.AddressRequest;
 import com.jsp.warehouse.responsedto.AddressResponse;
-import com.jsp.warehouse.responsedto.AdminResponse;
 
 @Component
 public class AddressMapper {

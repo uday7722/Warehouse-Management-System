@@ -17,7 +17,6 @@ import com.jsp.warehouse.models.WareHouse;
 import com.jsp.warehouse.repo.StorageRepo;
 import com.jsp.warehouse.repo.WareHouseRepo;
 import com.jsp.warehouse.requestdto.StorageRequest;
-import com.jsp.warehouse.responsedto.AdminResponse;
 import com.jsp.warehouse.responsedto.StorageResponse;
 import com.jsp.warehouse.service.StorageService;
 import com.jsp.warehouse.util.ResponseStructure;
@@ -42,26 +41,27 @@ public class StorageServiceImpl implements StorageService{
 
 		List<Storage> storages=new ArrayList<Storage>();
 
+		int count=0;
 		while(noOfStorageUnits>0) {
 
 			Storage storage = storageMapper.mapToStorage(storageRequest, new Storage());
 			storage.setWareHouse(wareHouse);
 			storage.setAvailableAreaInMetres(storageRequest.getLengthInMeters()*storageRequest.getBreadthInMeters()*storageRequest.getHeightInMeters());
 			storage.setMaxAdditionalWeightInKg(storageRequest.getCapacityWeightInKg());
-
+			wareHouse.setTotalCapacityInKg(storageRequest.getCapacityWeightInKg()*noOfStorageUnits+wareHouse.getTotalCapacityInKg());
 
 			storages.add(storage);
-
+			count++;
 			noOfStorageUnits--;
 
 		}
-
+		
 		storageRepo.saveAll(storages);
+		wareHouseRepo.save(wareHouse);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(new SimpleStructure<String>()
 				.setStatus(HttpStatus.CREATED.value())
-				.setMesssage(" "+noOfStorageUnits+" storages created"));
-
+				.setMesssage(" "+count+" storages created"));
 
 	}
 
@@ -78,9 +78,7 @@ public class StorageServiceImpl implements StorageService{
 					.setData(storageMapper.mapToStorageResponse(existingStorage))
 					);	
 
-
 		}).orElseThrow(()-> new StorageNotFoundByIdException("No storage found by the given id"));
-
 
 	}
 }

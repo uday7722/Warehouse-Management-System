@@ -1,6 +1,5 @@
 package com.jsp.warehouse.serviceimpl;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,6 @@ import com.jsp.warehouse.responsedto.AddressResponse;
 import com.jsp.warehouse.service.AddressService;
 import com.jsp.warehouse.util.ResponseStructure;
 
-import jakarta.validation.Valid;
 
 @Service
 public class AddressServiceImpl implements AddressService{

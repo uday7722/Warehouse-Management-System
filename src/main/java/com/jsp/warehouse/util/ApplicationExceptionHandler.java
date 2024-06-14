@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.jsp.warehouse.exception.AddressNotFoundByIdException;
 import com.jsp.warehouse.exception.AdminNotFoundByIdException;
 import com.jsp.warehouse.exception.IllegalOperationException;
+import com.jsp.warehouse.exception.StorageNotFoundByIdException;
+import com.jsp.warehouse.exception.WareHouseNotFoundByCityException;
 import com.jsp.warehouse.exception.WareHouseNotFoundByIdException;
 
 @RestControllerAdvice
@@ -66,6 +68,16 @@ public class ApplicationExceptionHandler {
 	
 	@ExceptionHandler
 	public ResponseEntity<ErrorStructure<String>> handlerWarehouseNotFoundByIdException(WareHouseNotFoundByIdException exception){
+		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorStructure<String>> handlerStorageNotFoundByIdException(StorageNotFoundByIdException exception){
+		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorStructure<String>> handlerWareHouseNotFoundByCityException(WareHouseNotFoundByCityException exception){
 		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
 	}
 

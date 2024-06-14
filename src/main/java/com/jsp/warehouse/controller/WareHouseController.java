@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+
 @RestController
 @RequestMapping("/api/v1")
 public class WareHouseController {
@@ -54,6 +55,12 @@ public class WareHouseController {
 	@GetMapping("/warehouses")
 	public ResponseEntity<ResponseStructure<List<WareHouseResponse>>> findAllWarehouse() {	
 		return service.findAllWarehouse();
+	}
+	
+	
+	@GetMapping("cities/{city}/warehouses")
+	public ResponseEntity<ResponseStructure<List<WareHouseResponse>>> findWarehouseByCity(@PathVariable String city) {
+		return service.findWarehouseByCity(city); 
 	}
 	
 	

@@ -10,7 +10,6 @@ import com.jsp.warehouse.service.StorageService;
 import com.jsp.warehouse.util.ResponseStructure;
 import com.jsp.warehouse.util.SimpleStructure;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
