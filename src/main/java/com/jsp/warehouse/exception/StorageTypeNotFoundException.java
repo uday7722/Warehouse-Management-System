@@ -1,19 +1,16 @@
-package com.jsp.warehouse.responsedto;
+package com.jsp.warehouse.exception;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class ApiKeyResponse {
-
-	private String apikey;
+@NoArgsConstructor
+public class StorageTypeNotFoundException extends RuntimeException {
 	
+	private String message;
 
 }

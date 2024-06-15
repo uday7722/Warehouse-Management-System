@@ -38,7 +38,7 @@ public class ClientServiceImpl implements ClientService{
 		clientRepo.save(client);
 		
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseStructure<ApiKeyResponse>().setStatus(HttpStatus.CREATED.value()).setMessage("client created").setData(clientMapper.mapToApiKey(client)));		
+		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseStructure<ApiKeyResponse>().setStatus(HttpStatus.CREATED.value()).setMessage("client data creeated").setData(clientMapper.mapToApiKey(client)));		
 		
 	}
 
@@ -53,11 +53,7 @@ public class ClientServiceImpl implements ClientService{
 			return ResponseEntity.status(HttpStatus.FOUND).body(new ResponseStructure<ClientResponse>().setStatus(HttpStatus.FOUND.value()).setMessage("Updated successfully").setData(clientMapper.mapToClientResponse(existingClient)));
 			
 		}).orElseThrow(()->new ClientNotFoundByIdException("No client found by the given id"));
-		
-		
-		
-		
-		
+	
 		
 		
 	}

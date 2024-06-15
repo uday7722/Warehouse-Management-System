@@ -1,5 +1,6 @@
 package com.jsp.warehouse.responsedto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,12 +9,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class ApiKeyResponse {
-
-	private String apikey;
+public class AllStorageResponse {
 	
+	 private double lengthInMeters;
+		private double breadthInMeters;
+		private double heightInMeters;
+		private double capacityWeightInKg;
 
 }
