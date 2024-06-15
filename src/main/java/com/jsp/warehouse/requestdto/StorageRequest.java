@@ -17,10 +17,7 @@ public class StorageRequest {
 	
 	private String blockName;
 	private String section;
-	private double lengthInMeters;
-	private double breadthInMeters;
-	private double heightInMeters;
-	private double capacityWeightInKg;
+	
 	List<MaterialType> materialType;
 
 }

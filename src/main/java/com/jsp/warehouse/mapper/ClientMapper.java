@@ -22,7 +22,7 @@ public class ClientMapper {
 	public ApiKeyResponse mapToApiKey(Client client) {
 		return ApiKeyResponse.builder()
 				.apikey(client.getApiKey())
-				.message("Created").build();
+				.build();
 	}
 	
 	public ClientResponse mapToClientResponse(Client client) {
