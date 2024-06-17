@@ -41,7 +41,7 @@ public class StorageServiceImpl implements StorageService{
 	private StorageTypeRepository storageTypeRepository; 
 
 	@Override
-	public ResponseEntity<SimpleStructure<String>> createStorage(StorageRequest storageRequest,int warehouseId,@RequestParam int noOfStorageUnits,int storageTypeId) {
+	public ResponseEntity<SimpleStructure<String>> createStorage(StorageRequest storageRequest,int warehouseId,int noOfStorageUnits,int storageTypeId) {
 
 		WareHouse wareHouse = wareHouseRepo.findById(warehouseId).orElseThrow(()->new WareHouseNotFoundByIdException("No warehouse found by the given id"));
 		
@@ -49,15 +49,18 @@ public class StorageServiceImpl implements StorageService{
 
 		List<Storage> storages=new ArrayList<Storage>();
 		
-
+//		wareHouse.setTotalCapacityInKg(storageType.getCapacityWeightInKg()*noOfStorageUnits+wareHouse.getTotalCapacityInKg());
+		
 		int count=0;
 		while(noOfStorageUnits>0) {
 
 			Storage storage = storageMapper.mapToStorage(storageRequest, new Storage());
+			
 			storage.setWareHouse(wareHouse);
 			storage.setStorageType(storageType);
-			storage.setMaxAdditionalWeightInKg(storageType.getCapacityWeightInKg());
 			storageType.setUnitsAvailable(storageType.getUnitsAvailable()+noOfStorageUnits);
+			storage.setMaxAdditionalWeightInKg(storageType.getCapacityWeightInKg());
+			
 			
 			storages.add(storage);
 			count++;
@@ -91,7 +94,6 @@ public class StorageServiceImpl implements StorageService{
 		}).orElseThrow(()-> new StorageNotFoundByIdException("No storage found by the given id"));
 
 	}
-
 
 }
 

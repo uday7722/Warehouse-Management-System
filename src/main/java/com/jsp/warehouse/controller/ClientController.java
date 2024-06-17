@@ -26,13 +26,13 @@ public class ClientController {
 	@Autowired
 	private ClientService clientService;
 	
-	@PostMapping("/clients")
+	@PostMapping("/client/register")
 	public ResponseEntity<ResponseStructure<ApiKeyResponse>> registerClient(@RequestBody ClientRequest clientRequset) {
 		
 		return clientService.registerClient(clientRequset);
 	}
 	
-	@PutMapping("/{clientId}/clients")
+	@PutMapping("/client/{clientId}/clients")
 	public ResponseEntity<ResponseStructure<ClientResponse>> updateClients(@PathVariable int clientId, @RequestBody ClientRequest clientRequest) {
 		
 		return clientService.updateClients(clientRequest,clientId);

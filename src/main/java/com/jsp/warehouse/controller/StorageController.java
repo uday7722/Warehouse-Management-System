@@ -35,9 +35,6 @@ public class StorageController {
 	@Autowired
 	private StorageService storageService; 
 	
-	@Autowired
-	private StorageRepo storageRepo;
-	
 	@PreAuthorize("hasAuthority('CREATE_STORAGE')")
 	@PostMapping("/warehouses/{warehouseId}/storagetypes/{storageTypeId}/storages")
 	public ResponseEntity<SimpleStructure<String>> createStorage(@RequestBody StorageRequest storageRequest,@PathVariable int warehouseId,@RequestParam("no_of_storage_units") int noOfStorageUnits,@PathVariable int storageTypeId) {
