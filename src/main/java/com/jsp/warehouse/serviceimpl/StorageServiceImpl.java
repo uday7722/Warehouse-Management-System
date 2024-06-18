@@ -47,6 +47,8 @@ public class StorageServiceImpl implements StorageService{
 		
 		StorageType storageType = storageTypeRepository.findById(storageTypeId).orElseThrow(()->new StorageTypeNotFoundByIdException("No storage found"));
 
+		
+		
 		List<Storage> storages=new ArrayList<Storage>();
 		
 //		wareHouse.setTotalCapacityInKg(storageType.getCapacityWeightInKg()*noOfStorageUnits+wareHouse.getTotalCapacityInKg());
