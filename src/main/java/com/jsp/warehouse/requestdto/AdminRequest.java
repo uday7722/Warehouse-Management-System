@@ -1,5 +1,9 @@
 package com.jsp.warehouse.requestdto;
 
+import java.util.List;
+
+import com.jsp.warehouse.enums.AdminType;
+import com.jsp.warehouse.enums.Privilege;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

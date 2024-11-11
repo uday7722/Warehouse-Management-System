@@ -9,7 +9,7 @@ public enum AdminType {
 			,Privilege.UPDATE_ADMIN,Privilege.UPDATE_WAREHOUSE,Privilege.UPDATE_STORAGE,Privilege.UPDATE_ADDRESS,
 			Privilege.DELETE_ADMIN,Privilege.DELETE_WAREHOUSE,Privilege.DELETE_STORAGE,Privilege.DELETE_ADDRESS)),
 
-	ADMIN(List.of(Privilege.CREATE_STORAGE,Privilege.READ,Privilege.UPDATE_ADMIN,Privilege.UPDATE_STORAGE,Privilege.DELETE_STORAGE,Privilege.CREATE_WAREHOUSE));
+	ADMIN(List.of(Privilege.CREATE_STORAGE,Privilege.READ,Privilege.UPDATE_ADMIN,Privilege.UPDATE_STORAGE,Privilege.DELETE_STORAGE));
 
 	private List<Privilege> privileges;
 

@@ -12,15 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.jsp.warehouse.exception.AddressNotFoundByIdException;
-import com.jsp.warehouse.exception.AdminNotFoundByIdException;
 import com.jsp.warehouse.exception.IllegalOperationException;
-import com.jsp.warehouse.exception.StorageTypeNotFoundException;
-import com.jsp.warehouse.exception.StorageNotFoundByIdException;
-import com.jsp.warehouse.exception.StorageTypeNotFoundByIdException;
-import com.jsp.warehouse.exception.StoragesNotFoundException;
-import com.jsp.warehouse.exception.WareHouseNotFoundByCityException;
-import com.jsp.warehouse.exception.WareHouseNotFoundByIdException;
 
 @RestControllerAdvice
 public class ApplicationExceptionHandler {
@@ -58,56 +50,5 @@ public class ApplicationExceptionHandler {
 	public ResponseEntity<ErrorStructure<String>> hadlerIllegalOperationExcepetion(IllegalOperationException exception){
 		return errorResponse(HttpStatus.FORBIDDEN, exception.getMessage(),"Super admin is already present" ); 
 	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerAddressNotFoundByIdException(AddressNotFoundByIdException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerAdminNotFoundByIdException(AdminNotFoundByIdException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerWarehouseNotFoundByIdException(WareHouseNotFoundByIdException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerStorageNotFoundByIdException(StorageNotFoundByIdException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerWareHouseNotFoundByCityException(WareHouseNotFoundByCityException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerStorageTypeNotFoundByIdException(StorageTypeNotFoundByIdException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerStoragesNotFoundException(StoragesNotFoundException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Storages are empty in the database");
-	}
-	
-	@ExceptionHandler
-	public ResponseEntity<ErrorStructure<String>> handlerNoStorageTypesFoundExcepetion(StorageTypeNotFoundException exception){
-		return errorResponse(HttpStatus.NOT_FOUND, exception.getMessage(), "Give the credentials which are present");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
