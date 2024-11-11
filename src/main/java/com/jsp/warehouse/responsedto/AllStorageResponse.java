@@ -1,5 +1,6 @@
 package com.jsp.warehouse.responsedto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,14 +12,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class WareHouseResponse {
+public class AllStorageResponse {
 	
-	private int wareHouseId;
-	private String name;
-	private double totalCapacityInKg;
-	
-	private AddressResponse addressResponse;
-	
-	
+	 private double lengthInMeters;
+		private double breadthInMeters;
+		private double heightInMeters;
+		private double capacityWeightInKg;
 
 }

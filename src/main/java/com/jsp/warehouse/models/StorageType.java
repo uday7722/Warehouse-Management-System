@@ -1,11 +1,6 @@
 package com.jsp.warehouse.models;
 
-
-import com.jsp.warehouse.enums.AdminType;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,23 +9,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+@Getter
+@Setter
+public class StorageType {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int adminId;
-	private String name;
-	private String email;
+	private int storageTypeId;
+	private double lengthInMeters;
+	private double breadthInMeters;
+	private double heightInMeters;
+	private double capacityWeightInKg;
+	private int unitsAvailable;
 	
-	private String password;
-	@Enumerated(EnumType.STRING)
-	AdminType adminType;
-	
-	
+
 }

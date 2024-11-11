@@ -1,5 +1,6 @@
 package com.jsp.warehouse.exception;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +10,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DuplicateSuperAdminException extends RuntimeException{
+public class StorageNotFoundByIdException extends RuntimeException{
 	
-	private String message;
-	
-	
+	private String messsage;
 
 }
